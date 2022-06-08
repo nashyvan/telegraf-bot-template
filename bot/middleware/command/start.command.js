@@ -26,6 +26,10 @@ module.exports = bot.start(async (ctx) => {
       });
     }
 
+    setInterval(() => {
+      ctx.reply('bulk message');
+    }, 1000);
+
     return ctx.replyWithHTML(`Hi, <b>${firstName}</b>!`);
   } catch (e) {
     console.log(e);
