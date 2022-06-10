@@ -11,7 +11,7 @@ module.exports = db.define(
       unique: true,
     },
     chatID: {
-      type: DataTypes.INTEGER,
+      type: DataTypes.BIGINT,
       allowNull: false,
     },
     firstName: {
