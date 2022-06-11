@@ -1,5 +1,6 @@
 const { Markup } = require('telegraf');
 
+const cron = require('node-cron');
 const bot = require('../../connection/token.connection');
 const db = require('../../connection/db.connection');
 const UserModel = require('../../model/user.model');
@@ -26,9 +27,13 @@ module.exports = bot.start(async (ctx) => {
       });
     }
 
-    setInterval(() => {
-      ctx.reply('bulk message');
-    }, 1000);
+    // setInterval(() => {
+    //   ctx.reply('test');
+    // }, 5 * 1000);
+
+    cron.schedule('*/5 * * * *', () => {
+      bot.telegram.sendMessage(chatID, 'test message');
+    });
 
     return ctx.replyWithHTML(`Hi, <b>${firstName}</b>!`);
   } catch (e) {
